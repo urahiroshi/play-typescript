@@ -1,11 +1,11 @@
-import MyBaseClass from './index';
+import { MyBaseClass, MyInterface } from './index';
 
-// export default class SumClass extends MyBaseClass {
-//   sum() {
-//     return this.A + this.B;
-//   }
-// }
+export interface SumInterface extends MyInterface {
+  sum: () => number;
+}
 
-export default (base: MyBaseClass): number => {
-  return base.A + base.B;
-};
+export class SumClass extends MyBaseClass implements SumInterface {
+  sum(): number {
+    return this.A * this.B;
+  }
+}

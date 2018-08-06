@@ -3,7 +3,12 @@ export interface CommonParams {
   paramB: number,
 }
 
-export default class MyBaseClass {
+export interface MyInterface {
+  A: number;
+  B: number;
+}
+
+export class MyBaseClass implements MyInterface {
   A: number;
   B: number;
 

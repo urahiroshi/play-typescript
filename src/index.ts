@@ -1,25 +1,17 @@
-import MyBaseClass from './lib';
-import sum from './lib/sum';
-import multiply from './lib/multiply';
+import { MyBaseClass, CommonParams } from './lib';
+import { SumInterface, SumClass } from './lib/sum';
+import { MultiplyInterface, MultiplyClass } from './lib/multiply';
 
-export default class MyClass extends MyBaseClass {
-  sum(): number {
-    return sum(this);
-  }
-
-  multiply(): number {
-    return multiply(this);
-  }
+export interface MyInterface extends SumInterface, MultiplyInterface {
 }
 
-// export class AbstractClass {
-//   sum: () => number;
-//   multiply: () => number;
-// }
+export default class MyClass extends MyBaseClass implements MyInterface {
+  sum: () => number;
+  multiply: () => number;
 
-// export default class MyClass extends AbstractClass {
-// }
-
-// MyClass.prototype.sum = function () {
-//   return sum(this);
-// }
+  constructor(obj: CommonParams) {
+    super(obj);
+    this.sum = SumClass.prototype.sum.bind(this);
+    this.multiply = MultiplyClass.prototype.multiply.bind(this);
+  }
+}

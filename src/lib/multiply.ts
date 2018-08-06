@@ -1,11 +1,11 @@
-import MyBaseClass from './index';
+import { MyBaseClass, MyInterface } from './index';
 
-// export default class MultiplyClass extends MyBaseClass {
-//   multiply() {
-//     return this.A * this.B;
-//   }
-// }
+export interface MultiplyInterface extends MyInterface {
+  multiply: () => number;
+}
 
-export default (base: MyBaseClass): number => {
-  return base.A * base.B;
-};
+export class MultiplyClass extends MyBaseClass implements MultiplyInterface {
+  multiply(): number {
+    return this.A * this.B;
+  }
+}
